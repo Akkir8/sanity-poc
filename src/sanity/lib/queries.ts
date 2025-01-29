@@ -19,6 +19,9 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
       _type == "faqs" => {
         ...,
         faqs[]->
+      },
+      _type == "hero" => {
+       ...
       }
     }      
   }

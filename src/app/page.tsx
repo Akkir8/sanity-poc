@@ -1,9 +1,13 @@
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1>This is food Blog Home Page:</h1>
-      </main>
-    </div>
-  );
+import { PageBuilder } from "@/components/PageBuilder";
+import { sanityFetch } from "@/sanity/lib/live";
+import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
+
+export default async function Page() {
+  const { data: page } = await sanityFetch({
+    query: HOME_PAGE_QUERY,
+  });
+
+  return page?.homePage?.modules ? (
+    <PageBuilder content={page?.homePage?.modules} />
+  ) : null;
 }

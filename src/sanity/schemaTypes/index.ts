@@ -11,6 +11,7 @@ import { imageType } from './common/imageType';
 import { linksType } from './common/linksType';
 import { richTextType } from './common/richTextType';
 import { textType } from './common/textType';
+import home from './home';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -26,6 +27,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imageType,
     linksType,
     richTextType,
-    textType
+    textType,
+    home
   ],
 };

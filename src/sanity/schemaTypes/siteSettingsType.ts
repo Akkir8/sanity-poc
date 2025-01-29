@@ -6,11 +6,22 @@ export const siteSettingsType = defineType({
   title: "Site Settings",
   type: "document",
   icon: ControlsIcon,
+  groups: [
+    {
+      default: true,
+      name: 'homePage',
+      title: 'Home Page',
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+    },
+  ],
   fields: [
     defineField({
       name: "homePage",
       type: "reference",
-      to: [{ type: "page" }],
+      to: [{ type: "home" }],
     }),
   ],
   preview: {
