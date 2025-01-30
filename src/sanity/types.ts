@@ -68,6 +68,45 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type AnnotationLinkInternal = {
+  _type: "annotationLinkInternal";
+  reference?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  };
+};
+
+export type AnnotationLinkExternal = {
+  _type: "annotationLinkExternal";
+  url?: string;
+  newWindow?: boolean;
+};
+
+export type AnnotationLinkEmail = {
+  _type: "annotationLinkEmail";
+  email?: string;
+};
+
+export type LinkInternal = {
+  _type: "linkInternal";
+  title?: string;
+  reference?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  };
+};
+
+export type LinkExternal = {
+  _type: "linkExternal";
+  title?: string;
+  url?: string;
+  newWindow?: boolean;
+};
+
 export type TextComponent = {
   _type: "textComponent";
   text?: string;
@@ -127,6 +166,20 @@ export type SiteSettings = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "home";
+  };
+  menu?: {
+    links?: Array<{
+      _key: string;
+    } & LinkInternal | {
+      _key: string;
+    } & LinkExternal>;
+  };
+  footer?: {
+    links?: Array<{
+      _key: string;
+    } & LinkInternal | {
+      _key: string;
+    } & LinkExternal>;
   };
 };
 
@@ -346,7 +399,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | TextComponent | RichTextComponent | LinkComponent | ImageComponent | SiteSettings | Home | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Page | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | AnnotationLinkInternal | AnnotationLinkExternal | AnnotationLinkEmail | LinkInternal | LinkExternal | TextComponent | RichTextComponent | LinkComponent | ImageComponent | SiteSettings | Home | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Page | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY

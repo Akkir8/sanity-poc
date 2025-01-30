@@ -12,6 +12,11 @@ import { linksType } from './common/linksType';
 import { richTextType } from './common/richTextType';
 import { textType } from './common/textType';
 import home from './home';
+import linkExternal from './objects/linkExternal';
+import linkInternal from './objects/linkInternal';
+import annotationLinkEmail from './annotation/annotationLinkEmail';
+import annotationLinkExternal from './annotation/annotationLinkExternal';
+import annotationLinkInternal from './annotation/annotationLinkInternal';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -28,6 +33,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     linksType,
     richTextType,
     textType,
-    home
+    home,
+    linkExternal,
+    linkInternal,
+    annotationLinkEmail,
+    annotationLinkExternal,
+    annotationLinkInternal
   ],
 };

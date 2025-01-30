@@ -13,8 +13,8 @@ export const siteSettingsType = defineType({
       title: 'Home Page',
     },
     {
-      name: 'seo',
-      title: 'SEO',
+      name: 'navigation',
+      title: 'Navigation',
     },
   ],
   fields: [
@@ -22,6 +22,48 @@ export const siteSettingsType = defineType({
       name: "homePage",
       type: "reference",
       to: [{ type: "home" }],
+      group: "homePage"
+    }),
+    defineField({
+      name: 'menu',
+      title: 'Menu',
+      type: 'object',
+      group: 'navigation',
+      options: {
+        collapsed: false,
+        collapsible: true,
+      },
+      fields: [
+        // Links
+        defineField({
+          name: 'links',
+          title: 'Links',
+          type: 'array',
+          of: [
+            {type: 'linkInternal'},
+            {type: 'linkExternal'},
+          ],
+        }),
+      ],
+    }),
+     defineField({
+      name: 'footer',
+      title: 'Footer',
+      type: 'object',
+      group: 'navigation',
+      options: {
+        collapsed: false,
+        collapsible: true,
+      },
+      fields: [
+        // Links
+        defineField({
+          name: 'links',
+          title: 'Links',
+          type: 'array',
+          of: [{type: 'linkInternal'}, {type: 'linkExternal'}],
+        }),
+      ],
     }),
   ],
   preview: {
