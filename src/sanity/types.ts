@@ -559,7 +559,7 @@ export type PAGE_QUERYResult = {
   };
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "siteSettings"][0]{  homePage->{    ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "hero" => {       ...      }    }        }}
+// Query: *[_id == "siteSettings"][0]{  homePage->{    ...,        }}
 export type HOME_PAGE_QUERYResult = {
   homePage: null;
 } | {
@@ -573,7 +573,46 @@ export type HOME_PAGE_QUERYResult = {
     modules?: Array<{
       _key: string;
     } & Hero>;
-    content: null;
+  } | null;
+} | null;
+// Variable: LAYOUT_QUERY
+// Query: *[_type == 'siteSettings'] | order(_updatedAt desc) [0] {  footer {    links[] {      _key,      (_type == 'linkExternal') => {        _key,        _type,        newWindow,        title,        url      },      (_type == 'linkInternal') => {        _key,        _type,        title,        ...reference-> {          (_type == "home") => {            "slug": "/",          },          (_type == "page") => {            "slug": "/" + slug.current,          },        }      }    }  },menu {    links[] {      _key,      (_type == 'linkExternal') => {        _key,        _type,        newWindow,        title,        url      },      (_type == 'linkInternal') => {        _key,        _type,        title,        ...reference-> {          (_type == "home") => {            "slug": "/",          },          (_type == "page") => {            "slug": "/" + slug.current,          },        }      }    }  }  }
+export type LAYOUT_QUERYResult = {
+  footer: {
+    links: Array<{
+      _key: string;
+      _type: "linkExternal";
+      newWindow: boolean | null;
+      title: string | null;
+      url: string | null;
+    } | {
+      _key: string;
+      _type: "linkInternal";
+      title: string | null;
+      slug: string | null;
+    } | {
+      _key: string;
+      _type: "linkInternal";
+      title: string | null;
+    }> | null;
+  } | null;
+  menu: {
+    links: Array<{
+      _key: string;
+      _type: "linkExternal";
+      newWindow: boolean | null;
+      title: string | null;
+      url: string | null;
+    } | {
+      _key: string;
+      _type: "linkInternal";
+      title: string | null;
+      slug: string | null;
+    } | {
+      _key: string;
+      _type: "linkInternal";
+      title: string | null;
+    }> | null;
   } | null;
 } | null;
 
@@ -582,6 +621,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...,\n    _type == \"faqs\" => {\n      ...,\n      faqs[]->\n    }\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"hero\" => {\n       ...\n      }\n    }      \n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    ...,      \n  }\n}": HOME_PAGE_QUERYResult;
+    "\n*[_type == 'siteSettings'] | order(_updatedAt desc) [0] {\n  footer {\n    links[] {\n      _key,\n      (_type == 'linkExternal') => {\n        _key,\n        _type,\n        newWindow,\n        title,\n        url\n      },\n      (_type == 'linkInternal') => {\n        _key,\n        _type,\n        title,\n        ...reference-> {\n          (_type == \"home\") => {\n            \"slug\": \"/\",\n          },\n          (_type == \"page\") => {\n            \"slug\": \"/\" + slug.current,\n          },\n        }\n      }\n    }\n  },\nmenu {\n    links[] {\n      _key,\n      (_type == 'linkExternal') => {\n        _key,\n        _type,\n        newWindow,\n        title,\n        url\n      },\n      (_type == 'linkInternal') => {\n        _key,\n        _type,\n        title,\n        ...reference-> {\n          (_type == \"home\") => {\n            \"slug\": \"/\",\n          },\n          (_type == \"page\") => {\n            \"slug\": \"/\" + slug.current,\n          },\n        }\n      }\n    }\n  }\n  }\n": LAYOUT_QUERYResult;
   }
 }

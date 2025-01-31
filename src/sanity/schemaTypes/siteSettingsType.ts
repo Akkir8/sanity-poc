@@ -9,12 +9,12 @@ export const siteSettingsType = defineType({
   groups: [
     {
       default: true,
-      name: 'homePage',
-      title: 'Home Page',
+      name: "homePage",
+      title: "Home Page",
     },
     {
-      name: 'navigation',
-      title: 'Navigation',
+      name: "navigation",
+      title: "Navigation",
     },
   ],
   fields: [
@@ -22,13 +22,13 @@ export const siteSettingsType = defineType({
       name: "homePage",
       type: "reference",
       to: [{ type: "home" }],
-      group: "homePage"
+      group: "homePage",
     }),
     defineField({
-      name: 'menu',
-      title: 'Menu',
-      type: 'object',
-      group: 'navigation',
+      name: "menu",
+      title: "Menu",
+      type: "object",
+      group: "navigation",
       options: {
         collapsed: false,
         collapsible: true,
@@ -36,21 +36,18 @@ export const siteSettingsType = defineType({
       fields: [
         // Links
         defineField({
-          name: 'links',
-          title: 'Links',
-          type: 'array',
-          of: [
-            {type: 'linkInternal'},
-            {type: 'linkExternal'},
-          ],
+          name: "links",
+          title: "Links",
+          type: "array",
+          of: [{ type: "linkInternal" }, { type: "linkExternal" }],
         }),
       ],
     }),
-     defineField({
-      name: 'footer',
-      title: 'Footer',
-      type: 'object',
-      group: 'navigation',
+    defineField({
+      name: "footer",
+      title: "Footer",
+      type: "object",
+      group: "navigation",
       options: {
         collapsed: false,
         collapsible: true,
@@ -58,10 +55,10 @@ export const siteSettingsType = defineType({
       fields: [
         // Links
         defineField({
-          name: 'links',
-          title: 'Links',
-          type: 'array',
-          of: [{type: 'linkInternal'}, {type: 'linkExternal'}],
+          name: "links",
+          title: "Links",
+          type: "array",
+          of: [{ type: "linkInternal" }, { type: "linkExternal" }],
         }),
       ],
     }),
