@@ -11,6 +11,7 @@ import LogoCloud1 from "@/components/ui/logo-cloud/logo-cloud-1";
 import FAQs from "@/components/ui/faqs";
 import FormNewsletter from "@/components/ui/forms/newsletter";
 import AllPosts from "@/components/ui/all-posts";
+import Youtube from "./ui/video/youtube";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const componentMap: { [key: string]: React.ComponentType<any> } = {
@@ -27,6 +28,7 @@ const componentMap: { [key: string]: React.ComponentType<any> } = {
   faqs: FAQs,
   "form-newsletter": FormNewsletter,
   "all-posts": AllPosts,
+  "youtube" : Youtube
 };
 
 export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {

@@ -37,6 +37,7 @@ import logoCloud1 from "./schemas/blocks/logo-cloud/logo-cloud-1";
 import faqs from "./schemas/blocks/faqs";
 import newsletter from "./schemas/blocks/forms/newsletter";
 import allPosts from "./schemas/blocks/all-posts";
+import youtube from "./schemas/video/youtube";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -77,5 +78,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     faqs,
     newsletter,
     allPosts,
+    youtube
   ],
 };
